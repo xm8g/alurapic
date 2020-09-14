@@ -1,7 +1,18 @@
+<div class="text-center text-muted" *ngIf="rows.length == 0">
+    Sorry, no photos!!
+</div>
 <ol class="list-unstyled">
-    <li *ngFor="let cols of rows" class="row">
-        <div *ngFor="let photo of cols" class="col-4">
-            <app-photo [url]="photo.url" [description]="photo.description"></app-photo>
+    <li *ngFor="let cols of rows" class="row no-gutters">
+        <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness="90%">
+            <a [routerLink]="['/p', photo.id]"><!-- Esta barra /p  serve para sair da rota relativa e começar pela raíz-->
+                <app-card [title]="photo.description">
+                    <app-photo [url]="photo.url" [description]="photo.description"></app-photo>
+                    <div class="text-center p-1">
+                        <i class="fa fa-heart-o fa-1x mr-2" aria-hidden="true"></i>{{ photo.likes }}
+                        <i class="fa fa-comment-o fa-1x mr-2 ml-2" aria-hidden="true"></i>{{ photo.comments }}
+                    </div>
+                </app-card>
+            </a>
         </div>
     </li>
 </ol>

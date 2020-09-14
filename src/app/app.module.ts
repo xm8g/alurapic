@@ -1,3 +1,4 @@
+import { DarkenOnHoverModule } from './shared/directives/darken-on-hover/darken-on-hover.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,16 +7,21 @@ import { AppComponent } from './app.component';
 import { PhotoModule } from './photo/photo.module';
 import { AppRoutingModule } from './app-routing-module';
 import { ErrorsModule } from './errors/errors.module';
+import { HomeModule } from './home/home.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     PhotoModule,
-    AppRoutingModule,
-    ErrorsModule
+    ErrorsModule,
+    DarkenOnHoverModule,
+    CoreModule,
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

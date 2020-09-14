@@ -1,29 +1,21 @@
+import { AuthGuard } from './core/auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PhotoListComponent } from './photo/photo-list/photo-list.component';
 import { PhotoFormComponent } from './photo/photo-form/photo-form.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListService } from './photo/photo-list/photo-list.service';
-import { SigninComponent } from './home/signin/signin.component';
-import { AuthGuard } from './core/auth/auth.guard';
-import { SignupComponent } from './home/signup/signup.component';
-import { HomeComponent } from './home/home.component';
+import { PhotoDetailComponent } from './photo/photo-detail/photo-detail.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        component: SigninComponent,
-      },
-      {
-        path: 'signup',
-        component: SignupComponent,
-      },
-    ]
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'user/:userName',
@@ -34,7 +26,13 @@ export const routes: Routes = [
   },
   {
     path: 'p/add',
-    component: PhotoFormComponent
+    component: PhotoFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'p/:photoId',
+    component: PhotoDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

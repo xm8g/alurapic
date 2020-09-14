@@ -1,1 +1,5 @@
-<app-photo-grid [photos]="photos"></app-photo-grid>
+<app-search (onTyping)="filter = $event" [value]="filter"></app-search>
+
+<app-photo-grid [photos]="photos | filterByDescription : filter"></app-photo-grid>
+
+<app-load-button [hasMore]="hasMore" (click)="load()"></app-load-button>
