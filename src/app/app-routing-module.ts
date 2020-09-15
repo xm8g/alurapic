@@ -35,8 +35,12 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
     path: '**',
-    component: NotFoundComponent
+    redirectTo: 'not-found'
   }
 ];
 

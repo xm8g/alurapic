@@ -5,3 +5,7 @@ body {
 break-word {
     word-break: break-all;
 }
+
+.red-heart {
+    color: crimson;
+}

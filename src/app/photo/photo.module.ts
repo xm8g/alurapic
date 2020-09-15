@@ -17,6 +17,9 @@ import { RouterModule } from '@angular/router';
 import { ImmediateClickModule } from '../shared/directives/immediate-click/immediate-click.module';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 import { PhotoCommentsComponent } from './photo-detail/photo-comments/photo-comments.component';
+import { PhotoOwnerOnlyDirective } from './photo-detail/photo-owner-only/photo-owner-only.directive';
+import { ShowIfLoggedDirective } from '../shared/directives/show-if-logged/show-if-logged.directive';
+import { ShowIfLoggedModule } from '../shared/directives/show-if-logged/show-if-logged.module';
 
 
 
@@ -31,16 +34,19 @@ import { PhotoCommentsComponent } from './photo-detail/photo-comments/photo-comm
     CardComponent,
     SearchComponent,
     PhotoDetailComponent,
-    PhotoCommentsComponent
+    PhotoCommentsComponent,
+    PhotoOwnerOnlyDirective,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     DarkenOnHoverModule,
+    FormsModule,
     ReactiveFormsModule,
     VmessageModule,
     RouterModule,
-    ImmediateClickModule
+    ImmediateClickModule,
+    ShowIfLoggedModule
   ],
   exports: []
 })
